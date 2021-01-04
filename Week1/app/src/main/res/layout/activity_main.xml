@@ -23,18 +23,18 @@
             android:layout_alignParentTop="false"
             android:layout_centerInParent="false"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10sp"
-            android:layout_marginLeft="10sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginLeft="20sp"
             android:layout_weight="1"
             android:fontFamily="@font/baloo"
             android:gravity="center|center_vertical"
             android:text="더보기"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <ImageButton
             android:id="@+id/imageButton3"
-            android:layout_width="14sp"
-            android:layout_height="14sp"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
             android:layout_centerVertical="true"
             android:layout_marginRight="1dp"
             android:layout_toLeftOf="@id/imageButton4"
@@ -47,8 +47,8 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            android:layout_width="14sp"
-            android:layout_height="14sp"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
             android:layout_alignParentTop="false"
             android:layout_centerVertical="true"
             android:layout_marginStart="5sp"
@@ -58,21 +58,20 @@
             android:layout_toLeftOf="@id/imageButton5"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            android:padding="0"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/music_icon" />
 
         <ImageButton
             android:id="@+id/imageButton5"
-            android:layout_width="14sp"
-            android:layout_height="14sp"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
             android:layout_alignParentTop="false"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="5sp"
             android:layout_marginLeft="5sp"
-            android:layout_marginEnd="10sp"
-            android:layout_marginRight="10sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginRight="20sp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
@@ -93,8 +92,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="false"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10sp"
-            android:layout_marginLeft="10sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginLeft="20sp"
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp">
 
@@ -117,7 +116,7 @@
             android:layout_marginLeft="10sp"
             android:layout_toRightOf="@id/profile"
             android:text="ChaCha"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView5"
@@ -129,7 +128,7 @@
             android:layout_marginLeft="10sp"
             android:layout_toRightOf="@id/profile"
             android:text="jpark58@gmail.com"
-            android:textSize="8sp" />
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
@@ -143,12 +142,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10sp"
-            android:layout_marginLeft="10sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginLeft="20sp"
             android:background="@drawable/rounded_corner_view"
             android:padding="4sp"
             android:text="Pay 0원"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView7"
@@ -159,7 +158,7 @@
             android:layout_marginRight="5sp"
             android:layout_toLeftOf="@id/textView8"
             android:text="송금"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView8"
@@ -170,7 +169,7 @@
             android:layout_marginRight="5sp"
             android:layout_toLeftOf="@id/textView9"
             android:text="결제"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView9"
@@ -178,10 +177,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="10sp"
-            android:layout_marginRight="10sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginRight="20sp"
             android:text="자산"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
     </RelativeLayout>
 
     <TableLayout
@@ -618,6 +617,45 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/ad" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView31"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/people" />
+
+        <ImageView
+            android:id="@+id/imageView32"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/forum" />
+
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/dashboard" />
+
+        <ImageView
+            android:id="@+id/imageView34"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/more" />
     </LinearLayout>
 
 </LinearLayout>

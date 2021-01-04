@@ -1,4 +1,4 @@
-package com.example.week1
+package com.example.hw1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.os.Bundle
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.screen2)
-
+        setContentView(R.layout.activity_main)
     }
 }
