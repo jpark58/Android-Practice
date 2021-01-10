@@ -6,5 +6,23 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="colorHome">#FEFFFF</color>
+    <color name="colorWhite">#F3E7E7</color>
+    <color name="colorGray">#CFCCCC</color>
+    <color name="colorLightBlack">#FF171C26</color>
+    <color name="colorText">#FF606570</color>
+    <color name="colorDarkBlack">#FF10141C</color>
+    <color name="colorYellow">#FFffd633</color>
+    <color name="colorPrimary">#FF10141c</color>
+    <color name="colorPrimaryDark">#FF171C26</color>
+    <color name="colorBlue">#FF4e33ff</color>
+    <color name="colorAccent">#FF4e33ff</color>
+
+    <color name="colorFood">#61C38D</color>
+    <color name="colorEntertainment">#5F71E6</color>
+    <color name="colorFamily">#F1B9DA</color>
+    <color name="colorMovie">#EB6769</color>
+    <color name="colorTravel">#F8C233</color>
 </resources>
