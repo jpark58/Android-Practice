@@ -7,66 +7,52 @@
     android:background="@drawable/gradient_bg"
     tools:context=".StartActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
-        app:layout_constraintBottom_toTopOf="@id/imageView2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="80sp"
-        android:text="Create your Note!"
-        android:gravity="center"
-        android:fontFamily="sans-serif"
-        android:textSize="30sp"
-        android:textColor="@color/teal_700"
-        android:textStyle="bold"
-        />
-
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView2"
         android:layout_width="150sp"
         android:layout_height="150sp"
-
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:textSize="20sp"
         android:fontFamily="sans-serif"
         android:hint="Enter your name"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.119" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/nameBtn"
-        app:layout_constraintTop_toBottomOf="@id/username"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please enter your name"
-        android:textColor="#fff"
-        android:backgroundTint="@color/colorMovie"
-        android:textSize="20sp"
-        android:layout_marginRight="20sp"
         android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
         android:background="@drawable/background"
+        android:backgroundTint="@color/colorMovie"
+        android:text="Create your profile"
         android:textAllCaps="false"
-        />
+        android:textColor="#fff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.139" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
