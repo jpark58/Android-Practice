@@ -182,6 +182,7 @@ class WriteActivity : AppCompatActivity() {
                 notes.noteText = etNoteDesc.text.toString()
                 notes.dateTime = currentDate
                 notes.tag = tag
+                notes.like = "0"
                 this?.let{
                     com.example.mynote.database.NotesDatabase.getDatabase(this@WriteActivity).noteDao().insertNotes(notes)
                     etNoteTitle.setText("")
@@ -212,4 +213,5 @@ class WriteActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d("로그", "WriteActivity - onDestroy")
     }
+
 }

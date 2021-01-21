@@ -25,6 +25,9 @@ class Notes: Serializable{
     @ColumnInfo(name = "tag")
     var tag: String? = null
 
+    @ColumnInfo(name = "like")
+    var like: String? = null
+
 
     override fun toString(): String {
         return "$title: $dateTime"

@@ -60,8 +60,19 @@ class NotesAdapter(): RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
             holder.itemView.imgTag.setBackgroundResource(R.drawable.ic_face)
         }
 
+
+        if(arrList[position].like == "0"){
+            holder.itemView.like.setImageResource(R.drawable.ic_star)
+        }else{
+            holder.itemView.like.setImageResource(R.drawable.ic_star_clicked)
+        }
+
         holder.itemView.cardView.setOnClickListener {
             listener!!.onClicked(arrList[position].id!!)
+        }
+
+        holder.itemView.like.setOnClickListener {
+            listener!!.onLikeClicked(holder.itemView, arrList[position].id!!)
         }
     }
 
@@ -75,5 +86,6 @@ class NotesAdapter(): RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
     interface OnItemClickListener{
         fun onClicked(notesId:Int)
+        fun onLikeClicked(view: View, notesId:Int)
     }
 }

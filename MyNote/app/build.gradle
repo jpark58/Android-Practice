@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.mynote"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -56,4 +56,10 @@ dependencies {
     implementation 'pub.devrel:easypermissions:3.0.0'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
+
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+
+    implementation 'com.airbnb.android:lottie:3.4.1'
+
+    implementation 'com.cuberto:liquid-swipe:1.0.0'
 }

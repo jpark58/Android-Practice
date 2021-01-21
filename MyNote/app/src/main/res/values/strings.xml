@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyNote</string>
+    <string name="dialog_title">This is title</string>
+    <string name="dialog_body">this is body</string>
 </resources>
