@@ -14,13 +14,8 @@ class Flight(gameView: GameView, screenY: Int, res: Resources) {
     var wingCounter = 0
     var width: Int? = null
     var height: Int? = null
-    lateinit var flight1: Bitmap
-    lateinit var flight2: Bitmap
+    lateinit var flight: Bitmap
     lateinit var shoot1: Bitmap
-    lateinit var shoot2: Bitmap
-    lateinit var shoot3: Bitmap
-    lateinit var shoot4: Bitmap
-    lateinit var shoot5: Bitmap
     lateinit var dead: Bitmap
     var isGoingUp = false
     var toShoot = 0
@@ -29,11 +24,10 @@ class Flight(gameView: GameView, screenY: Int, res: Resources) {
 
     init{
         this.gameView = gameView
-        flight1 = BitmapFactory.decodeResource(res, R.drawable.jet)
-        //flight2 = BitmapFactory.decodeResource(res, R.drawable.fly2)
+        flight = BitmapFactory.decodeResource(res, R.drawable.jet)
 
-        width = flight1.width
-        height = flight1.height
+        width = flight.width
+        height = flight.height
 
         width  = width!!/12
         height = height!!/12
@@ -41,20 +35,10 @@ class Flight(gameView: GameView, screenY: Int, res: Resources) {
         width = width!! * (screenRatioX!!.toInt())
         height = height!! * (screenRatioY!!.toInt())
 
-        flight1 = Bitmap.createScaledBitmap(flight1, width!!, height!!, false)
-       // flight2 = Bitmap.createScaledBitmap(flight2, width!!, height!!, false)
-
+        flight = Bitmap.createScaledBitmap(flight, width!!, height!!, false)
         shoot1 = BitmapFactory.decodeResource(res, R.drawable.jet)
-        //shoot2 = BitmapFactory.decodeResource(res, R.drawable.shoot2)
-        //shoot3 = BitmapFactory.decodeResource(res, R.drawable.shoot3)
-        //shoot4 = BitmapFactory.decodeResource(res, R.drawable.shoot4)
-        //shoot5 = BitmapFactory.decodeResource(res, R.drawable.shoot5)
 
         shoot1 = Bitmap.createScaledBitmap(shoot1, width!!, height!!, false)
-        //shoot2 = Bitmap.createScaledBitmap(shoot2, width!!, height!!, false)
-        //shoot3 = Bitmap.createScaledBitmap(shoot3, width!!, height!!, false)
-        //shoot4 = Bitmap.createScaledBitmap(shoot4, width!!, height!!, false)
-        //shoot5 = Bitmap.createScaledBitmap(shoot5, width!!, height!!, false)
 
         dead = BitmapFactory.decodeResource(res, R.drawable.jet)
         dead = Bitmap.createScaledBitmap(dead, width!!, height!!, false)
@@ -64,6 +48,7 @@ class Flight(gameView: GameView, screenY: Int, res: Resources) {
 
     }
 
+    @JvmName("getFlight1")
     fun getFlight(): Bitmap {
         if(toShoot != 0){
             if(shootCounter == 1){
@@ -91,11 +76,11 @@ class Flight(gameView: GameView, screenY: Int, res: Resources) {
         }
         if(wingCounter == 0){
             wingCounter++
-            return flight1
+            return flight
         }
 
         wingCounter--
-        return flight1
+        return flight
 
     }
 

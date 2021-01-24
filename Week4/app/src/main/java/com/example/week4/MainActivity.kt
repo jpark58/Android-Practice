@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        rank.setOnClickListener {
+            val intent2 = Intent(this, RankActivity::class.java)
+            startActivity(intent2)
+        }
+
+
         var prefs = getSharedPreferences("game", MODE_PRIVATE)
         hightScoreText.setText("HighScore: " + prefs.getInt("highscore", 0))
 

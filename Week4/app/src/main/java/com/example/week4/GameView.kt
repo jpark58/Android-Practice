@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.*
-import android.media.SoundPool
 import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import org.json.JSONArray
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -25,7 +25,7 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
     private val painter: Paint
     private lateinit var flight: Flight
     var bullets: ArrayList<Bullet>? = null
-    private lateinit var birds: ArrayList<Bird>
+    private lateinit var ufos: ArrayList<Ufo>
     private lateinit var random: Random
     private var score = 0
     private lateinit var prefs: SharedPreferences
@@ -62,11 +62,11 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
         painter.color = Color.WHITE
 
         bullets = ArrayList<Bullet>()
-        birds = ArrayList<Bird>()
+        ufos = ArrayList<Ufo>()
 
         for(i in 0..3){
-            var bird = Bird(resources)
-            birds.add(bird)
+            var ufo = Ufo(resources)
+            ufos.add(ufo)
         }
 
         random = Random()
@@ -82,8 +82,8 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
                     canvas.drawBitmap(background1.background, background1.x.toFloat(), background1.y.toFloat(), painter)
                     canvas.drawBitmap(background2.background, background2.x.toFloat(), background2.y.toFloat(), painter)
 
-                    for(bird in birds){
-                        canvas.drawBitmap(bird.getBird(), bird.x.toFloat(), bird.y!!.toFloat(), painter)
+                    for(ufo in ufos){
+                        canvas.drawBitmap(ufo.getUfo(), ufo.x.toFloat(), ufo.y!!.toFloat(), painter)
                     }
 
                     canvas.drawText(score.toString(), screenX!! / 2f, 164f, painter)
@@ -91,6 +91,7 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
                     if(isGameOver){
                         isPlaying = false
                         canvas.drawBitmap(flight.getDeadFlight(), flight.x!!.toFloat(), flight.y!!.toFloat(), painter)
+                        canvas.drawText("Your Score: ${score}", (screenX!!/6).toFloat(), (screenY!!/2).toFloat(), painter)
                         ourHolder.unlockCanvasAndPost(canvas)
                         saveIfHighScore()
                         waitBeforeExiting()
@@ -120,6 +121,43 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
     }
 
     private fun saveIfHighScore() {
+
+        var editor = prefs.edit()
+        var jsonArr: JSONArray
+        var str = prefs.getString("ranking", "")
+
+        if(str != null){
+            if(str == ""){
+                jsonArr = JSONArray()
+                jsonArr.put(0, score.toString())
+            }else{
+                jsonArr = JSONArray(str)
+                var temp = ArrayList<Int>()
+                for(i in 0..(jsonArr.length()-1)){
+                    temp.add(jsonArr[i].toString().toInt())
+
+                }
+                temp.add(score)
+                temp.sortDescending()
+                jsonArr = JSONArray()
+                if(temp.size < 5){
+                    for(i in 0..(temp.size-1)){
+                        jsonArr.put(temp[i])
+                        Log.d("로그3", "${jsonArr[i].toString()}")
+                    }
+                }else{
+                    for(i in 0..4){
+                        jsonArr.put(temp[i])
+                        Log.d("로그3", "${jsonArr[i].toString()}")
+                    }
+                }
+
+            }
+            editor.putString("ranking", jsonArr.toString())
+            editor.apply()
+
+        }
+
         if(prefs.getInt("highscore", 0) < score){
             var editor = prefs.edit()
             editor.putInt("highscore", score)
@@ -175,12 +213,12 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
 
             bullet.x = bullet.x!! + (50 * screenRatioX!!.toInt())
 
-            for(bird in birds){
-                if(Rect.intersects(bird.getCollisionShape(), bullet.getCollisionShape())){
+            for(ufo in ufos){
+                if(Rect.intersects(ufo.getCollisionShape(), bullet.getCollisionShape())){
                     score++
-                    bird.x = -500
+                    ufo.x = -500
                     bullet.x = screenX!! + 500
-                    bird.wasShot = true
+                    ufo.wasShot = true
                 }
             }
         }
@@ -189,29 +227,29 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
             bullets!!.remove(bullet)
         }
 
-        for(bird in birds){
-            bird.x -= bird.speed
+        for(ufo in ufos){
+            ufo.x -= ufo.speed
 
-            if(bird.x + bird.width!! < 0){
+            if(ufo.x + ufo.width!! < 0){
 
-                if(!bird.wasShot){
+                if(!ufo.wasShot){
                     isGameOver = true
                     return
                 }
                 var bound = 30 * screenRatioX!!.toInt()
-                bird.speed = random.nextInt(bound)
+                ufo.speed = random.nextInt(bound)
 
-                if(bird.speed < 10 * screenRatioX!!.toInt()){
-                    bird.speed = 10 * screenRatioX!!.toInt()
+                if(ufo.speed < 10 * screenRatioX!!.toInt()){
+                    ufo.speed = 10 * screenRatioX!!.toInt()
                 }
 
-                bird.x = screenX!!
-                bird.y = random.nextInt(screenY!! - bird.height!!)
+                ufo.x = screenX!!
+                ufo.y = random.nextInt(screenY!! - ufo.height!!)
 
-                bird.wasShot = false
+                ufo.wasShot = false
             }
 
-            if(Rect.intersects(bird.getCollisionShape(), flight.getCollisionShape())){
+            if(Rect.intersects(ufo.getCollisionShape(), flight.getCollisionShape())){
                 isGameOver = true
                 return
             }
@@ -248,5 +286,6 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
 
         bullets!!.add(bullet)
     }
+
 
 }
