@@ -74,6 +74,7 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
     override fun surfaceCreated(holder: SurfaceHolder) {
         isPlaying = true
         thread = Thread{
+            delayStart()
             while(isPlaying!!){
                 update()
                 if(ourHolder.surface.isValid){
@@ -93,7 +94,7 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
                         canvas.drawBitmap(flight.getDeadFlight(), flight.x!!.toFloat(), flight.y!!.toFloat(), painter)
                         canvas.drawText("Your Score: ${score}", (screenX!!/6).toFloat(), (screenY!!/2).toFloat(), painter)
                         ourHolder.unlockCanvasAndPost(canvas)
-                        saveIfHighScore()
+                        updateScore()
                         waitBeforeExiting()
 
                     }else{
@@ -111,7 +112,30 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
             }
         }
         Log.d("로그2", "In GameView surfaceCreated")
+
+
         thread.start()
+    }
+
+    private fun delayStart(){
+
+        val canvas = ourHolder.lockCanvas()
+        canvas.drawBitmap(background1.background, background1.x.toFloat(), background1.y.toFloat(), painter)
+        canvas.drawText("3", (screenX!!/2).toFloat(), (screenY!!/2).toFloat(), painter)
+        ourHolder.unlockCanvasAndPost(canvas)
+        Thread.sleep(1000)
+
+        ourHolder.lockCanvas()
+        canvas.drawBitmap(background1.background, background1.x.toFloat(), background1.y.toFloat(), painter)
+        canvas.drawText("2", (screenX!!/2).toFloat(), (screenY!!/2).toFloat(), painter)
+        ourHolder.unlockCanvasAndPost(canvas)
+        Thread.sleep(1000)
+
+        ourHolder.lockCanvas()
+        canvas.drawBitmap(background1.background, background1.x.toFloat(), background1.y.toFloat(), painter)
+        canvas.drawText("1", (screenX!!/2).toFloat(), (screenY!!/2).toFloat(), painter)
+        ourHolder.unlockCanvasAndPost(canvas)
+        Thread.sleep(1000)
     }
 
     private fun waitBeforeExiting() {
@@ -120,7 +144,7 @@ class GameView(activity: GameActivity, screenX: Int, screenY: Int): SurfaceView(
         activity.finish()
     }
 
-    private fun saveIfHighScore() {
+    private fun updateScore() {
 
         var editor = prefs.edit()
         var jsonArr: JSONArray

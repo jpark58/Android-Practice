@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
 
         var prefs = getSharedPreferences("game", MODE_PRIVATE)
-        hightScoreText.setText("HighScore: " + prefs.getInt("highscore", 0))
+        hightScoreText.setText("Highest Score: " + prefs.getInt("highscore", 0))
 
     }
 }
