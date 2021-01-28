@@ -2,6 +2,7 @@ package com.example.week5
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.week5.databinding.ActivityMainBinding
@@ -11,6 +12,7 @@ import com.example.week5.fragments.MyPageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
 
     private lateinit var homeFragment: HomeFragment
     private lateinit var meFragment: MeFragment
@@ -28,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         homeFragment = HomeFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.fragments_frame, homeFragment).commit()
+
+        val email = intent.getStringExtra("email")
+        Log.d("로그", "${email}")
     }
 
     private val onBottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
