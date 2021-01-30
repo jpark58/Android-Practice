@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment: Fragment() {
 
-
+//test
     private var fragmentHomeBinding : FragmentHomeBinding? = null
     private lateinit var movieAdapter: MovieRecyclerAdapter
     private var movieList = ArrayList<Movie>()
