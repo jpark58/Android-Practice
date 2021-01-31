@@ -1,8 +1,14 @@
 package com.example.week5
 
+import android.app.SearchManager
+import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.widget.EditText
+import android.widget.SearchView
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.week5.databinding.ActivityMainBinding
@@ -10,6 +16,7 @@ import com.example.week5.fragments.HomeFragment
 import com.example.week5.fragments.MeFragment
 import com.example.week5.fragments.MyPageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var meFragment: MeFragment
     private lateinit var myPageFragment: MyPageFragment
     private lateinit var activityMainBinding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +39,14 @@ class MainActivity : AppCompatActivity() {
         homeFragment = HomeFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.fragments_frame, homeFragment).commit()
 
+
         val email = intent.getStringExtra("email")
         Log.d("로그", "${email}")
+
+
     }
+
+
 
     private val onBottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
 

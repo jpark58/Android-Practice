@@ -4,10 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.animation.AnimationUtils
 import com.example.week5.databinding.ActivityLoginBinding
 import com.example.week5.databinding.ActivityMainBinding
 import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.user.UserApiClient
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var activityLoginBinding: ActivityLoginBinding
@@ -19,6 +21,8 @@ class LoginActivity : AppCompatActivity() {
         activityLoginBinding = binding
         setContentView(activityLoginBinding.root)
 
+        lottie.playAnimation()
+
         activityLoginBinding.loginBtn.setOnClickListener {
             LoginClient.instance.loginWithKakaoAccount(this@LoginActivity) { token, error ->
                 if (error != null) {
@@ -29,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+
+        supportActionBar?.hide()
     }
 
     fun setUserInfo(){

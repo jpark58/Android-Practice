@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.week5.databinding.FragmentHomeBinding
 import com.example.week5.databinding.FragmentMeBinding
+
 
 class MeFragment: Fragment() {
 
@@ -20,12 +21,13 @@ class MeFragment: Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentMeBinding.inflate(inflater, container, false)
         fragmentMeBinding = binding
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         return fragmentMeBinding?.root
     }

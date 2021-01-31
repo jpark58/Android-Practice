@@ -8,25 +8,26 @@
     tools:context=".MainActivity"
     >
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:liftOnScroll="true"
-        app:liftOnScrollTargetViewId="@id/my_recycler_view"
-        >
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+<!--        app:liftOnScroll="true"-->
+<!--        app:liftOnScrollTargetViewId="@id/my_recycler_view"-->
+<!--        >-->
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/top_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="영화검색"
-            app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_baseline_menu_24"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            />
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            android:id="@+id/top_app_bar_test"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:title="영화검색"-->
+<!--            app:menu="@menu/top_app_bar_menu"-->
+<!--            app:navigationIcon="@drawable/ic_baseline_menu_24"-->
+<!--            style="@style/Widget.MaterialComponents.Toolbar.Primary"-->
+<!--            app:layout_scrollFlags="scroll|enterAlways|snap"-->
+<!--            />-->
 
-    </com.google.android.material.appbar.AppBarLayout>
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
 
 
