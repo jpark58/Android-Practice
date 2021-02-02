@@ -1,12 +1,14 @@
 package com.example.week5.retrofit
 
 import android.util.Log
+import com.example.week5.kakaoretrofit.PapagoManager
 import com.example.week5.model.Movie
 import com.example.week5.utils.API
 import com.example.week5.utils.RESPONSE_STATE
 import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.Response
+import java.util.logging.Handler
 
 class RetrofitManager {
     companion object{
@@ -34,6 +36,8 @@ class RetrofitManager {
                             val total = body.get("totalResults").asInt
                             val search = body.getAsJsonArray("Search")
 
+
+
                             search.forEach{ item ->
                                 val obj = item.asJsonObject
 
@@ -42,8 +46,10 @@ class RetrofitManager {
                                 val id = obj.get("imdbID").asString
                                 val poster = obj.get("Poster").asString
 
+
                                 val movieItem = Movie(title=title, year = year, id = id, poster = poster)
                                 parsedMovieDataArray.add(movieItem)
+
                             }
                             completion(RESPONSE_STATE.OKAY, parsedMovieDataArray)
                         }

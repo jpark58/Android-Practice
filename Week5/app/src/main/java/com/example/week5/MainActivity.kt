@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.week5.databinding.ActivityMainBinding
 import com.example.week5.fragments.HomeFragment
+import com.example.week5.fragments.LikeFragment
 import com.example.week5.fragments.MeFragment
 import com.example.week5.fragments.MyPageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeFragment: HomeFragment
     private lateinit var meFragment: MeFragment
     private lateinit var myPageFragment: MyPageFragment
+    private lateinit var likeFragment: LikeFragment
     private lateinit var activityMainBinding: ActivityMainBinding
 
 
@@ -58,6 +60,10 @@ class MainActivity : AppCompatActivity() {
             R.id.meFragment -> {
                 meFragment = MeFragment.newInstance()
                 supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, meFragment).commit()
+            }
+            R.id.likeFragment -> {
+                likeFragment = LikeFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame,likeFragment).commit()
             }
             R.id.myPageFragment -> {
                 myPageFragment = MyPageFragment.newInstance()

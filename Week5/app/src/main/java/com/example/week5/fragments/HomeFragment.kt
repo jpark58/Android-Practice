@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.week5.KakaoApplication
 import com.example.week5.R
 import com.example.week5.databinding.FragmentHomeBinding
+import com.example.week5.kakaoretrofit.PapagoManager
 import com.example.week5.model.Movie
 import com.example.week5.recylerview.MovieRecyclerAdapter
 import com.example.week5.retrofit.RetrofitManager
@@ -53,8 +54,6 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener {
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
 
         setHasOptionsMenu(true)
-        //top_app_bar_test.inflateMenu(R.menu.top_app_bar_menu)
-        //(activity as AppCompatActivity).setSupportActionBar(top_app_bar)
 
 
 
@@ -74,23 +73,6 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener {
         })
 
 
-
-
-//        fragmentHomeBinding!!.searchBtn.setOnClickListener {
-//            RetrofitManager.instance.searchMovies(title = fragmentHomeBinding!!.searchTitle.text.toString(), completion = {
-//                responseState, responseBody ->
-//                when(responseState) {
-//                    RESPONSE_STATE.OKAY -> {
-//                        Log.d("로그", "호출 성공: ${responseBody?.size}")
-//                        this.movieAdapter.submitList(responseBody!!)
-//                    }
-//                    RESPONSE_STATE.FAIL -> {
-//                       Log.d("로그", "Error")
-//                    }
-//                }
-//
-//            })
-//        }
 
         return fragmentHomeBinding?.root
     }

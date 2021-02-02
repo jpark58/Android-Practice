@@ -10,6 +10,8 @@ class KakaoApplication : Application() {
     companion object{
         lateinit var instance: KakaoApplication
         private set
+
+        lateinit var token: String
     }
 
     override fun onCreate() {

@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.animation.AnimationUtils
 import com.example.week5.databinding.ActivityLoginBinding
 import com.example.week5.databinding.ActivityMainBinding
+import com.example.week5.utils.API
 import com.kakao.sdk.auth.LoginClient
+import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -23,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
 
         lottie.playAnimation()
 
+
         activityLoginBinding.loginBtn.setOnClickListener {
             LoginClient.instance.loginWithKakaoAccount(this@LoginActivity) { token, error ->
                 if (error != null) {
@@ -33,6 +36,8 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+
+
 
         supportActionBar?.hide()
     }
@@ -53,6 +58,19 @@ class LoginActivity : AppCompatActivity() {
                 intent.putExtra("email", user.kakaoAccount?.email)
                 intent.putExtra("nickname", user.kakaoAccount?.profile?.nickname)
                 intent.putExtra("image", user.kakaoAccount?.profile?.thumbnailImageUrl)
+
+                UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+                    if (error != null) {
+                        Log.e("로그", "토큰 정보 보기 실패", error)
+                    }
+                    else if (tokenInfo != null) {
+                        Log.i("로그", "토큰 정보 보기 성공" +
+                                "\n회원번호: ${tokenInfo.id}" +
+                                "\n만료시간: ${tokenInfo.expiresIn} 초")
+                       API.token = tokenInfo.id.toString()
+                    }
+                }
+
                 startActivity(intent)
             }
         }
